@@ -1,0 +1,1 @@
+waws --uploadS3 -b wluper-retrograph -f all -l "./../ConceptBERT/"

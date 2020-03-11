@@ -7,6 +7,7 @@ Please, follow these instructions to execute the experiments.
 ## 0 - Dependencies
 ```
 pip install networkx
+TODO add all dependencies
 ```
 
 ## 1 - Downloading project data

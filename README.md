@@ -1,5 +1,9 @@
 # Readme for Retrograph
 
+Environment: python 3.6
+
+Please, follow these instructions to execute the experiments.
+
 ## 0 - Dependencies
 ```
 pip install networkx

@@ -66,6 +66,8 @@ parse_prediction.py -> helps you create the right output file format, and you ne
 - Download CommonsenseQA dataset
 - Evaluation scripts or standards?
 
-2.
+github/jonathanherzig
+
+
 
 <!-- EOF -->

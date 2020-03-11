@@ -1,19 +1,25 @@
 # Readme for Retrograph
 
+## 0 - Dependencies
+```
+pip install networkx
+```
 
-## 0 - Downloading GLUE data and Pretrained BERT model
-Step1: (download bert)
-python3 download_bert.py
+## 1 - Downloading project data
+Step 1: GLUE data and Pretrained BERT model and relations
+```
+bash ./download_data_project.sh 
+```
 
-Step2: (downlaod glue)
-python3 download_glue.py --data_dir data/GLUE --tasks all
+## 2 - Creating Random Walks
+
+Step 1: Create node2vec format input. Output is a tsv file "relations/cn_filters.tsv".
+```
+bash ./create_random_walks.sh 
+```
+Step 2
 
 
-## 1 - Creating Random Walks
-
-Step1: (preprocess constraints)
-preprocess_cn.py -> formats olga constraint into node-2-vec input
-it has a relation_dict (which creates natural language) -> output is a tsv file (formated.tsv) "cn_assertions_filters.tsv"
 
 Step2: (generate walks through graph)
 random_walk.py -> takes the formated.tsv as input and creates a graph

@@ -1,5 +1,5 @@
 import codecs
-
+import glob
 """
 As we got the relations to consider from olga, we don't need to do this anymore
 """
@@ -20,7 +20,7 @@ As we got the relations to consider from olga, we don't need to do this anymore
 """
 Based on the data from olga
 """
-def create_joined_assertions_for_random_walks(paths=["./data/cn_antonyms.txt", "./data/cn_isA.txt", "./data/cn_mannerOf.txt","./data/cn_synonyms.txt"], output_path="./data/cn_assertions_filtered.tsv"):
+def create_joined_assertions_for_random_walks(paths=[], output_path=None):
   # we ideally want to have a "natural language representation" of the relations
   # TODO: keep in mind that antonymy and synonymy are bidirectional relationships, so maybe we want to account for this, i.e., by creating the corresponding pairs in the opposite direction or so
   # TODO: As an alternative of random walks, we can also just use the natural language representation of the relationships
@@ -28,7 +28,34 @@ def create_joined_assertions_for_random_walks(paths=["./data/cn_antonyms.txt", "
     "antonyms": "is an antonym of",
     "isA": "is a",
     "mannerOf": "is a manner of",
-    "synonyms": "is a synonym of"
+    "synonyms": "is a synonym of",
+    "atLocation": "at location",
+    "desires": "desires",
+    "symbolOf": "symbol of",
+    "causes": "causes",
+    "motivatedByGoal": "motivated by goal",
+    "definedAs": "defined as",
+    "usedFor": "used for",
+    "hasPrerequisite": "has prerequisite",
+    "hasSubevent": "has subevent",
+    "capableOf": "capable of",
+    "causesDesire": "causes desire",
+    "madeOf": "made of",
+    "hasA": "has a",
+    "locatedNear": "located near",
+    "hasLastSubevent": "has last subevent",
+    "hasProperty": "has property",
+    "relatedTo": "related to",
+    "receivesAction": "receives action",
+    "createdBy": "created by",
+    "hasContext": "has context",
+    "partOf": "part of",
+    "similarTo": "similar to",
+    "formOf": "form of",
+    "distinctFrom": "distinct from",
+    "obstructedBy": "obstructed by",
+    "derivedFrom": "derived from",
+    "hasFirstSubevent": "has first subevent",
   }
   all_assertions = []
   for path in paths:
@@ -52,7 +79,11 @@ def create_joined_assertions_for_random_walks(paths=["./data/cn_antonyms.txt", "
 
 
 def main():
-  create_joined_assertions_for_random_walks()
+  folder = 'relations/'
+  output = folder + "cn_filtered.tsv"
+  relations = glob.glob(folder + "/*.txt")
+  #print(relations)
+  create_joined_assertions_for_random_walks(paths=relations, output_path=output)
   #profile_data()
   #filter_assertions()
 

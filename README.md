@@ -1,6 +1,14 @@
 # Readme for Retrograph
 
 
+## 0 - Downloading GLUE data and Pretrained BERT model
+Step1: (download bert)
+python3 download_bert.py
+
+Step2: (downlaod glue)
+python3 download_glue.py --data_dir data/GLUE --tasks all
+
+
 ## 1 - Creating Random Walks
 
 Step1: (preprocess constraints)

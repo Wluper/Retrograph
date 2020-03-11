@@ -13,7 +13,7 @@ bash ./download_data_project.sh
 
 ## 2 - Creating Random Walks
 
-Step 1: Create node2vec format input. Output is a tsv file "relations/cn_filters.tsv".
+Step 1: Create node2vec format input. Output is a tsv file "relations/cn_filtered.tsv".
 ```
 bash ./create_random_walks.sh 
 ```

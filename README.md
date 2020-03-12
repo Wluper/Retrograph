@@ -8,6 +8,7 @@ Please, follow these instructions to execute the experiments.
 ```
 pip install networkx
 pip install tqdm
+pip install waws
 TODO add all dependencies
 ```
 
@@ -34,15 +35,13 @@ bash ./generate_corpus.sh
 The generated corpus will be used as input for BERT + Adapters. It creates a file in TF format: `randomwalks/rw_corpus_1.0_1.0_2_15_nl.tf`
 
 
-## 2- Pretraining (Adapter)
+## 4 - Pretraining Adapter
 
-Step1: (run the pretraining)
-run_pretraining_adapter.py OR
-run_pretraining_adapter_wo_nsp.py (without Next Sentence Prediciton)
+Step 4: Pretrain the adapter using the RW corpus:
+```
+bash ./pretrain_adapter.sh 
+```
 
-<!-- Comment -->
-Need to load the Adapter Model
-And need to load the Adapter Optimiser for that.
 
 ## 3 - Finetuning (Adapter)
 

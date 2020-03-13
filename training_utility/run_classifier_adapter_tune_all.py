@@ -1255,7 +1255,9 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
       predict_batch_size=FLAGS.predict_batch_size)
 
   if FLAGS.do_train:
-    train_file = os.path.join(output_dir, "train.tf_record")
+    # TODO: for different tokenization need to be reverted again
+    # train_file = os.path.join(output_dir, "train.tf_record")
+    train_file = os.path.join(FLAGS.data_dir, "train.tf_record")
     file_based_convert_examples_to_features(
         train_examples, label_list, FLAGS.max_seq_length, tokenizer, train_file)
     tf.logging.info("***** Running training *****")
@@ -1273,7 +1275,9 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
       assert(FLAGS.do_eval == False)
       raise NotImplementedError
       # eval_examples = processor.get_dev_examples(FLAGS.data_dir)
-      # eval_file = os.path.join(output_dir, "eval.tf_record")
+      # # TODO: for different tokenization need to be reverted again
+      # # eval_file = os.path.join(output_dir, "eval.tf_record")
+      # eval_file = os.path.join(FLAGS.data_dir, "eval.tf_record")
       # file_based_convert_examples_to_features(eval_examples, label_list, FLAGS.max_seq_length, tokenizer, eval_file)
       #
       # eval_hook_listener = EvalRoutineCheckpointSaverListener(model_dir=output_dir,
@@ -1345,7 +1349,9 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
       eval_examples = processor.get_dev_examples(FLAGS.data_dir, FLAGS.matched)
     else:
       eval_examples = processor.get_dev_examples(FLAGS.data_dir)
-    eval_file = os.path.join(output_dir, "eval.tf_record")
+    # TODO: for different tokenization need to be reverted again
+    # eval_file = os.path.join(output_dir, "eval.tf_record")
+    eval_file = os.path.join(FLAGS.data_dir, "eval.tf_record")
     file_based_convert_examples_to_features(
         eval_examples, label_list, FLAGS.max_seq_length, tokenizer, eval_file)
 
@@ -1383,7 +1389,10 @@ def main_run_classifier(_, config_str, train_batch_size, learning_rate, num_trai
       predict_examples = processor.get_test_examples(FLAGS.data_dir, FLAGS.matched)
     else:
       predict_examples = processor.get_test_examples(FLAGS.data_dir)
-    predict_file = os.path.join(output_dir, "predict.tf_record")
+
+    # TODO: for different tokenization need to be reverted again
+    # predict_file = os.path.join(output_dir, "predict.tf_record")
+    predict_file = os.path.join(FLAGS.data_dir, "predict.tf_record")
     file_based_convert_examples_to_features(predict_examples, label_list,
                                             FLAGS.max_seq_length, tokenizer,
                                             predict_file)

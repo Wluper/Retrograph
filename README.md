@@ -43,14 +43,11 @@ bash ./pretrain_adapter.sh
 ```
 
 
-## 3 - Finetuning (Adapter)
-
-Step1:
-run_classifier_adapter_tune_all.py ->
-
-<!-- Comment -->
-Need to load the Adapter Model
-Here it is probably recommended to use the orginal optimiser as it optimises BERT
+## 5 - Finetuning BERT + Adapter
+Step 5: Finetune BERT + adapter in the downstream tasks. To execute a grid search for the hyperparameters, execute the following command:
+```
+bash ./proc_finetuning_adapter_longer.sh
+```
 
 
 ## 4 - GLUE Submission

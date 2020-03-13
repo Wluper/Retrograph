@@ -8,7 +8,7 @@
 #Need to load the Adapter Model
 #And need to load the Adapter Optimiser for that.
 
-export CUDA_VISIBLE_DEVICES=7
+export CUDA_VISIBLE_DEVICES=8
 
 BERT_CONFIG_FILE=models/BERT_BASE_UNCASED/bert_config.json
 INPUT_FILE=randomwalks/rw_corpus_1.0_1.0_2_15_nl.tf

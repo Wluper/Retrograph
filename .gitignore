@@ -2,3 +2,5 @@
 __pycache__/
 data/
 models/
+relations/
+randomwalks/

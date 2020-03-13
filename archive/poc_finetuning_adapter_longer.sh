@@ -1,19 +1,29 @@
 #!/usr/bin/env bash
 
-export CUDA_VISIBLE_DEVICES=1
-BERT_DIR="/work/anlausch/uncased_L-12_H-768_A-12"
+#Step1:
+#run_classifier_adapter_tune_all.py ->
+#
+#<!-- Comment -->
+#Need to load the Adapter Model
+#Here it is probably recommended to use the orginal optimiser as it optimises BERT
+
+
+export CUDA_VISIBLE_DEVICES=8
+
+BERT_DIR="models/BERT_BASE_UNCASED"
 BERT_CONFIG=$BERT_DIR/bert_config.json
 VOCAB_DIR=$BERT_DIR/vocab.txt
 
-PATH_SUFFIX="/omcs/free-wo-nsp-adapter"
-BERT_EXTENDED_DIR="/work/anlausch/ConceptBERT/output/pretraining${PATH_SUFFIX}"
-OUTPUT_DIR="/work/anlausch/ConceptBERT/output/finetuning${PATH_SUFFIX}"
+BERT_EXTENDED_DIR="data/output_pretrain_adapter"
+OUTPUT_DIR="data/output_model_finetunning"
+
+GLUE_DIR='data/GLUE'
 
 OUTPUT_SUFFIX=_tune_all
 ### the second finetuning variant
-for STEP in "25000" "100000"; do
+for STEP in "98000" "99000"; do
     CHECKPOINT=${BERT_EXTENDED_DIR}/model.ckpt-${STEP}
-    for task_name in "QNLIV2" "QQP" "MNLI"; do
+    for task_name in "QNLI" "QQP" "MNLI"; do
         echo $task_name
         echo $CHECKPOINT
 

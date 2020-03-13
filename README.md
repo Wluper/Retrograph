@@ -38,7 +38,7 @@ Step 3: Create natural language text from the random walks:
 ```
 bash ./generate_corpus.sh
 ```
-The generated corpus will be used as input for BERT + Adapters. It creates a file in TF format: `randomwalks/rw_corpus_1.0_1.0_2_15_nl.tf`
+The generated corpus will be used as input for BERT + Adapters. It creates a file in TF format: `randomwalks/rw_corpus_1.0_1.0_2_15_nl.tf` (and also generates: `randomwalks/rw_corpus_1.0_1.0_2_15_nl.tf`)
 
 
 ## 4 - Pretraining Adapter
@@ -47,13 +47,15 @@ Step 4: Pretrain the adapter using the RW corpus:
 ```
 bash ./pretrain_adapter.sh
 ```
+Creates a model in: `models/output_pretrain_adapter`
 
 
 ## 5 - Finetuning BERT + Adapter
 Step 5: Finetune BERT + adapter in the downstream tasks. To execute a grid search for the hyperparameters, execute the following command:
 ```
-bash ./proc_finetuning_adapter_longer.sh
+bash ./finetune_adapter.sh
 ```
+Creates a model in: `models/output_model_finetunning`
 
 
 ## 4 - GLUE Submission

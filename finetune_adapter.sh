@@ -14,8 +14,8 @@ BERT_DIR="models/BERT_BASE_UNCASED"
 BERT_CONFIG=$BERT_DIR/bert_config.json
 VOCAB_DIR=$BERT_DIR/vocab.txt
 
-BERT_EXTENDED_DIR="data/output_pretrain_adapter"
-OUTPUT_DIR="data/output_model_finetunning"
+BERT_EXTENDED_DIR="models/output_pretrain_adapter"
+OUTPUT_DIR="models/output_model_finetunning"
 
 GLUE_DIR='data/GLUE'
 

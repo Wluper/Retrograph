@@ -14,7 +14,7 @@ export CUDA_VISIBLE_DEVICES=8
 
 BERT_CONFIG_FILE=models/BERT_BASE_UNCASED/bert_config.json
 INPUT_FILE=randomwalks/rw_corpus_1.0_1.0_2_15_nl.tf
-OUTPUT_DIR=data/output_pretrain_adapter
+OUTPUT_DIR=models/output_pretrain_adapter
 
 mkdir -p $OUTPUT_DIR
 

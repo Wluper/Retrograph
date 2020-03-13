@@ -33,7 +33,7 @@ It creates the main file `randomwalks/random_walk_1.0_1.0_2_15.p` and others als
 
 
 
-## 3 - Generating the Corpus
+## 3 - Generating the Corpus (This takes a serious while)
 Step 3: Create natural language text from the random walks:
 ```
 bash ./3_generate_corpus.sh

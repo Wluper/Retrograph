@@ -12,7 +12,7 @@ import os
 import numpy as np
 import tensorflow as tf
 
-from retrograph.modeling import modeling_adapter
+from retrograph.modeling import modeling_adapter as modeling
 from retrograph.modeling import optimization
 from retrograph.modeling import tokenization
 
@@ -646,11 +646,12 @@ def main(_):
   tf.gfile.MakeDirs(FLAGS.output_dir)
 
   processor = CommonsenseQAProcessor(split=FLAGS.split)
-
   label_list = processor.get_labels()
+  print("success")
 
   tokenizer = tokenization.FullTokenizer(
       vocab_file=FLAGS.vocab_file, do_lower_case=FLAGS.do_lower_case)
+  print("success2")
 
   tpu_cluster_resolver = None
   if FLAGS.use_tpu and FLAGS.tpu_name:

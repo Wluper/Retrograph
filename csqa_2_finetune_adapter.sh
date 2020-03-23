@@ -36,7 +36,7 @@ python3.6 $TRAINING_UTILITY/run_commonsenseqa_adapter.py \
   --bert_config_file=$BERT_CONFIG \
   --init_checkpoint=$CHECKPOINT \
   --max_seq_length=128 \
-  --train_batch_size=16 \
+  --train_batch_size=8 \
   --learning_rate=2e-5 \
   --num_train_epochs=3.0 \
   --output_dir=$OUTPUT_DIR/$TASKNAME/ | tee $OUTPUT_DIR/$TASKNAME.out

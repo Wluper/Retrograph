@@ -8,7 +8,7 @@
 #Here it is probably recommended to use the orginal optimiser as it optimises BERT
 TRAINING_UTILITY=training_utility
 
-export CUDA_VISIBLE_DEVICES=8
+export CUDA_VISIBLE_DEVICES=1
 
 BERT_DIR="models/BERT_BASE_UNCASED"
 BERT_CONFIG=$BERT_DIR/bert_config.json

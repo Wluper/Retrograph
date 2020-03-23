@@ -21,7 +21,7 @@ OUTPUT_SUFFIX=_tune_all
 GLUE_DIR='data/GLUE'
 
 ### the second finetuning variant
-for STEP in "98000" "99000"; do
+for STEP in "0" "99000"; do
     CHECKPOINT=${BERT_EXTENDED_DIR}/model.ckpt-${STEP}
     for task_name in "QNLI" "QQP" "MNLI"; do
         echo $task_name

@@ -27,14 +27,16 @@ STEP="25000"
 
 CHECKPOINT=${BERT_EXTENDED_DIR}/model.ckpt-${STEP}
 
+TRAINED_MODEL=$OUTPUT_DIR/$TASKNAME/model.ckpt-0
+
 python3.6 $TRAINING_UTILITY/run_commonsenseqa_adapter.py \
   --split=$SPLIT \
-  --do_train=true \
+  --do_train=false \
   --do_eval=true \
   --data_dir=$DATA_DIR \
   --vocab_file=$BERT_VOCAB \
   --bert_config_file=$BERT_CONFIG \
-  --init_checkpoint=$CHECKPOINT \
+  --init_checkpoint=$TRAINED_MODEL \
   --max_seq_length=128 \
   --train_batch_size=8 \
   --learning_rate=2e-5 \

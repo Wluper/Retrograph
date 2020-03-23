@@ -69,11 +69,33 @@ predictions_....sh
 parse_prediction.py -> helps you create the right output file format, and you need to name the glue.zip submission folder in the right way as well.
 
 
-## TODO:
-1. CommonsenseQA:
-- Preprocessor for CommonsenseQA
-- Download CommonsenseQA dataset
-- Evaluation scripts or standards?
+## TO RUN CommonsenseQA:
+0. Run Step 1 from above
+
+1. Download pretrained Adapters
+```
+chmod +x csqa_0_download_pretrained_adapters.sh
+./csqa_0_download_pretrained_adapters.sh
+```
+
+2. Download Commonsense Data
+```
+./csqa_1_download_commonsenseqa.sh
+```
+
+3. Fine Tune Adapter
+```
+./csqa_2_finetune_adapter.sh
+```
+
+4. Eval Locally
+```
+./csqa_3_eval_adapter.sh
+```
+
+Emails for CSQA:
+alontalmor@mail.tau.ac.il
+jonathan.herzig@cs.tau.ac.il
 
 github/jonathanherzig
 

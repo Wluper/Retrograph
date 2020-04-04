@@ -21,7 +21,7 @@ DATA_DIR=data/$TASKNAME
 STEP="25000"
 
 
-BERT_EXTENDED_DIR="models/omcs_pretraining_free_wo_nsp_adapter"
+BERT_EXTENDED_DIR="models/1.0_1.0_5_30_full_assertions_nl"
 CHECKPOINT=${BERT_EXTENDED_DIR}/model.ckpt-${STEP}
 
 OUTPUT_DIR="models/output_model_finetunning/${TASKNAME}"

@@ -47,9 +47,10 @@ It creates:
 - [SIQA](#siqa)
 
 
+<a name="random_walk"></a>
 ## B - Random Walks and Pretraining
 Follow these steps for pretraining adapter.
-<a name="random_walk"></a>
+
 
 ### 1 - Download Relations
 Step 1: Download Relations
@@ -90,9 +91,9 @@ Creates a model in: `models/output_pretrain_adapter`
 
 
 
-
-## C - Finetuning on Pretrained Adapters
 <a name="finetuning"></a>
+## C - Finetuning on Pretrained Adapters
+
 
 ### 9 - Download Pretrained Adapters (needs to be done if you don't have already pretrained adapters)
 
@@ -105,21 +106,27 @@ Creates a model in: `models/output_pretrain_adapter`
 **Modify the task_2_....sh files if you want to change hyper parameters**
 
 
-## GLUE
 <a name="glue"></a>
+## GLUE
+
 **Run all glue_1,2_.sh files in that order**
 
 
-## CommonsenseQA
+
 <a name="csqa"></a>
+## CommonsenseQA
+
 **Run all csqa_1,2_.sh files in that order**
 
-## COPA
+
 <a name="copa"></a>
+## COPA
+
 **Run all copa_1,2_.sh files in that order**
 
-## SIQA
+
 <a name="siqa"></a>
+## SIQA
 **Run all siqa_1,2_.sh files in that order**
 
 

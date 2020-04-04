@@ -206,10 +206,12 @@ class COPAProcessor(DataProcessor):
     examples = []
     for line in lines:
       qid = line['idx']
-      question = tokenization.convert_to_unicode(line['premise'])
+      premise = tokenization.convert_to_unicode(line['premise'])
+
+      question = "The cause was that " if line["question"]=="cause" else "The result was that "
       answers = np.array([
-        tokenization.convert_to_unicode(line["choice1"]),
-        tokenization.convert_to_unicode(line["choice2"])
+        tokenization.convert_to_unicode(question + line["choice1"]),
+        tokenization.convert_to_unicode(question + line["choice2"])
         ])
 
       # the test set has no answer key so use '0' as a dummy label
@@ -218,7 +220,7 @@ class COPAProcessor(DataProcessor):
       examples.append(
         InputExample(
           qid=qid,
-          question=question,
+          question=premise,
           answers=answers,
           label=label))
 

@@ -38,13 +38,13 @@ It creates:
 
 
 ### Next Steps:
-1. Generate Random Walks and Pretrain Adapter -> Go to [B - Random Walks and Pretraining](random_walk)
+1. Generate Random Walks and Pretrain Adapter -> Go to [B - Random Walks and Pretraining](#random_walk)
 
-2. [Finetuning on Pretrained Adapters](finetuning):
-- [GLUE](glue)
-- [CSQA](csqa)
-- [COPA](copa)
-- [SIQA](siqa)
+2. Finetune on existing Adapters -> Go to [C - Finetuning on Pretrained Adapters](#finetuning):
+- [GLUE](#glue)
+- [CSQA](#csqa)
+- [COPA](#copa)
+- [SIQA](#siqa)
 
 
 ## B - Random Walks and Pretraining
@@ -91,7 +91,8 @@ Creates a model in: `models/output_pretrain_adapter`
 
 
 
-## Finetuning BERT + Adapter
+## C - Finetuning on Pretrained Adapters
+<a name="finetuning"></a>
 
 ### 9 - Download Pretrained Adapters (needs to be done if you don't have already pretrained adapters)
 

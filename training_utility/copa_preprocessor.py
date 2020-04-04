@@ -62,8 +62,16 @@ class COPAProcessor(DataProcessor):
   DEV_FILE_NAME = 'val.en.jsonl'
   TEST_FILE_NAME = 'test_gold.jsonl'
 
-  def __init__(self):
-    pass
+  def __init__(self, variant="A"):
+    """ There are four variants:
+    Variant A: PREMISE [SEP] The cause/result was that ANSWER1 [SEP] The cause/result was that ANSWER2
+    Variant B: PREMISE [SEP] What was the cause/result of ANSWER1 [SEP] What was the cause/result of ANSWER2
+    Variant C: What was the cause/result of PREMISE [SEP] ANSWER1 [SEP]  ANSWER2
+    Variant D: PREMISE [SEP] ANSWER1 [SEP] ANSWER2
+
+    """
+    self.variant = variant
+
 
   def get_train_examples(self, data_dir):
     train_file_name = self.TRAIN_FILE_NAME
@@ -89,64 +97,104 @@ class COPAProcessor(DataProcessor):
   def get_labels(self):
     return [0, 1]
 
-  ## VARIANT Premise [SEP] STATMENT_Answer [SEP]
-  # def _create_examples(self, lines, set_type):
-  #   examples = []
-  #   for line in lines:
-  #     qid = line['idx']
-  #     premise = tokenization.convert_to_unicode(line['premise'])
-  #
-  #     question = "The cause was that " if line["question"]=="cause" else "The result was that "
-  #     answers = np.array([
-  #       tokenization.convert_to_unicode(question + line["choice1"]),
-  #       tokenization.convert_to_unicode(question + line["choice2"])
-  #       ])
-  #
-  #     # the test set has no answer key so use '0' as a dummy label
-  #     label = line.get('label', 0)
-  #
-  #     examples.append(
-  #       InputExample(
-  #         qid=qid,
-  #         question=premise,
-  #         answers=answers,
-  #         label=label))
-  #
-  #   return examples
-
-  ## VARIANT Premise [SEP] WH-Question_Answer [SEP]
-  # def _create_examples(self, lines, set_type):
-  #   examples = []
-  #   for line in lines:
-  #     qid = line['idx']
-  #     question = "What was the cause of " if line["question"]=="cause" else "What was the result of"
-  #     premise = tokenization.convert_to_unicode(line['premise'])
-  #
-  #     answers = np.array([
-  #       tokenization.convert_to_unicode(question + line["choice1"]),
-  #       tokenization.convert_to_unicode(question + line["choice2"])
-  #       ])
-  #
-  #     # the test set has no answer key so use '0' as a dummy label
-  #     label = line.get('label', 0)
-  #
-  #     examples.append(
-  #       InputExample(
-  #         qid=qid,
-  #         question=premise,
-  #         answers=answers,
-  #         label=label))
-  #
-  #   return examples
+  def _create_examples(self,lines, set_type):
+    """ Calls one of the variants"""
+    if self.variant=="A":
+      return self._create_examples_variant_A(lines, set_type)
+    elif self.variant=="B":
+      return self._create_examples_variant_B(lines, set_type)
+    elif self.variant=="C":
+      return self._create_examples_variant_C(lines, set_type)
+    elif self.variant=="D":
+      return self._create_examples_variant_D(lines, set_type)
+    else:
+      raise Exception("NO SUCH VARIAN FOR COPA PREPROCESSING")
 
 
-  ## VARIANT WH-Question_Premise [SEP] Answer [SEP]
-  def _create_examples(self, lines, set_type):
+  ## VARIANT_A Premise [SEP] STATMENT_Answer [SEP] ST Answer
+  def _create_examples_variant_A(self, lines, set_type):
+    examples = []
+    for line in lines:
+      qid = line['idx']
+      premise = tokenization.convert_to_unicode(line['premise'])
+
+      question = "The cause was that " if line["question"]=="cause" else "The result was that "
+      answers = np.array([
+        tokenization.convert_to_unicode(question + line["choice1"]),
+        tokenization.convert_to_unicode(question + line["choice2"])
+        ])
+
+      # the test set has no answer key so use '0' as a dummy label
+      label = line.get('label', 0)
+
+      examples.append(
+        InputExample(
+          qid=qid,
+          question=premise,
+          answers=answers,
+          label=label))
+
+    return examples
+
+  ## VARIANT_B Premise [SEP] WH-Question_Answer [SEP] WH_Q Answer
+  def _create_examples_variant_B(self, lines, set_type):
+    examples = []
+    for line in lines:
+      qid = line['idx']
+      question = "What was the cause of " if line["question"]=="cause" else "What was the result of"
+      premise = tokenization.convert_to_unicode(line['premise'])
+
+      answers = np.array([
+        tokenization.convert_to_unicode(question + line["choice1"]),
+        tokenization.convert_to_unicode(question + line["choice2"])
+        ])
+
+      # the test set has no answer key so use '0' as a dummy label
+      label = line.get('label', 0)
+
+      examples.append(
+        InputExample(
+          qid=qid,
+          question=premise,
+          answers=answers,
+          label=label))
+
+    return examples
+
+
+  ## VARIANT_C WH-Question_Premise [SEP] Answer [SEP] Answer
+  def _create_examples_variant_C(self, lines, set_type):
     examples = []
     for line in lines:
       qid = line['idx']
       question = "What was the cause of " if line["question"]=="cause" else "What was the result of"
       premise = tokenization.convert_to_unicode(question + line['premise'])
+
+      answers = np.array([
+        tokenization.convert_to_unicode(line["choice1"]),
+        tokenization.convert_to_unicode(line["choice2"])
+        ])
+
+      # the test set has no answer key so use '0' as a dummy label
+      label = line.get('label', 0)
+
+      examples.append(
+        InputExample(
+          qid=qid,
+          question=premise,
+          answers=answers,
+          label=label))
+
+    return examples
+
+
+  ## VARIANT_D Premise [SEP] Answer [SEP] Answer
+  def _create_examples_variant_D(self, lines, set_type):
+    examples = []
+    for line in lines:
+      qid = line['idx']
+
+      premise = tokenization.convert_to_unicode(line['premise'])
 
       answers = np.array([
         tokenization.convert_to_unicode(line["choice1"]),

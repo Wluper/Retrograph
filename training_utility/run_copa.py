@@ -16,6 +16,8 @@ from retrograph.modeling import modeling
 from retrograph.modeling import optimization
 from retrograph.modeling import tokenization
 
+from copa_preprocessor import InputExample, COPAProcessor
+
 
 flags = tf.flags
 

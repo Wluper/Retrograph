@@ -17,9 +17,11 @@ BERT_VOCAB=$BERT_DIR/vocab.txt
 TASKNAME='COPA'
 DATA_DIR=data/$TASKNAME
 
+LEARNING_RATE=2e-5
+EPOCHS=3.0
+VARIANT=A
 
-STEP="25000"
-EXPERIMENT_NAME="E2"
+EXPERIMENT_NAME=$LEARNING_RATE.$EPOCHS$VARIANT
 
 # BERT_EXTENDED_DIR="models/omcs_pretraining_free_wo_nsp_adapter"
 # CHECKPOINT=${BERT_EXTENDED_DIR}/model.ckpt-${STEP}
@@ -38,6 +40,7 @@ python3.6 $TRAINING_UTILITY/run_copa.py \
   --init_checkpoint=$CHECKPOINT \
   --max_seq_length=128 \
   --train_batch_size=8 \
-  --learning_rate=2e-5 \
-  --num_train_epochs=3.0 \
+  --learning_rate=$LEARNING_RATE \
+  --num_train_epochs=$EPOCHS \
+  --variant=$VARIANT \
   --output_dir=$OUTPUT_DIR/ | tee $OUTPUT_DIR.out

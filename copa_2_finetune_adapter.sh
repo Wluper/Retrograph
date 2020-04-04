@@ -17,7 +17,7 @@ BERT_VOCAB=$BERT_DIR/vocab.txt
 TASKNAME='COPA'
 DATA_DIR=data/$TASKNAME
 
-
+EXPERIMENT_NAME="E1"
 STEP="50000"
 
 
@@ -25,7 +25,7 @@ BERT_EXTENDED_DIR="models/1.0_1.0_5_30_full_assertions_nl"
 # BERT_EXTENDED_DIR="models/omcs_pretraining_free_wo_nsp_adapter"
 CHECKPOINT=${BERT_EXTENDED_DIR}/model.ckpt-${STEP}
 
-OUTPUT_DIR="models/output_model_finetunning/${TASKNAME}/${STEP}"
+OUTPUT_DIR="models/output_model_finetunning/${TASKNAME}/${EXPERIMENT_NAME}/${STEP}"
 
 
 python3.6 $TRAINING_UTILITY/run_copa_adapter.py \

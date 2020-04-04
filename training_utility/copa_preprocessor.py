@@ -87,16 +87,68 @@ class COPAProcessor(DataProcessor):
   def get_labels(self):
     return [0, 1]
 
+  ## VARIANT Premise [SEP] STATMENT_Answer [SEP]
+  # def _create_examples(self, lines, set_type):
+  #   examples = []
+  #   for line in lines:
+  #     qid = line['idx']
+  #     premise = tokenization.convert_to_unicode(line['premise'])
+  #
+  #     question = "The cause was that " if line["question"]=="cause" else "The result was that "
+  #     answers = np.array([
+  #       tokenization.convert_to_unicode(question + line["choice1"]),
+  #       tokenization.convert_to_unicode(question + line["choice2"])
+  #       ])
+  #
+  #     # the test set has no answer key so use '0' as a dummy label
+  #     label = line.get('label', 0)
+  #
+  #     examples.append(
+  #       InputExample(
+  #         qid=qid,
+  #         question=premise,
+  #         answers=answers,
+  #         label=label))
+  #
+  #   return examples
+
+  ## VARIANT Premise [SEP] WH-Question_Answer [SEP]
+  # def _create_examples(self, lines, set_type):
+  #   examples = []
+  #   for line in lines:
+  #     qid = line['idx']
+  #     question = "What was the cause of " if line["question"]=="cause" else "What was the result of"
+  #     premise = tokenization.convert_to_unicode(line['premise'])
+  #
+  #     answers = np.array([
+  #       tokenization.convert_to_unicode(question + line["choice1"]),
+  #       tokenization.convert_to_unicode(question + line["choice2"])
+  #       ])
+  #
+  #     # the test set has no answer key so use '0' as a dummy label
+  #     label = line.get('label', 0)
+  #
+  #     examples.append(
+  #       InputExample(
+  #         qid=qid,
+  #         question=premise,
+  #         answers=answers,
+  #         label=label))
+  #
+  #   return examples
+
+
+  ## VARIANT WH-Question_Premise [SEP] Answer [SEP]
   def _create_examples(self, lines, set_type):
     examples = []
     for line in lines:
       qid = line['idx']
-      premise = tokenization.convert_to_unicode(line['premise'])
+      question = "What was the cause of " if line["question"]=="cause" else "What was the result of"
+      premise = tokenization.convert_to_unicode(question + line['premise'])
 
-      question = "The cause was that " if line["question"]=="cause" else "The result was that "
       answers = np.array([
-        tokenization.convert_to_unicode(question + line["choice1"]),
-        tokenization.convert_to_unicode(question + line["choice2"])
+        tokenization.convert_to_unicode(line["choice1"]),
+        tokenization.convert_to_unicode(line["choice2"])
         ])
 
       # the test set has no answer key so use '0' as a dummy label

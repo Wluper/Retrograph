@@ -3,6 +3,7 @@ from retrograph.modeling import tokenization
 import tensorflow as tf
 import os
 import json
+import numpy as np
 
 class InputExample(object):
   """A single multiple choice question."""

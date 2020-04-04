@@ -26,7 +26,7 @@ EXPERIMENT_NAME="E2"
 
 BERT_EXTENDED_DIR=$BERT_DIR
 CHECKPOINT=${BERT_EXTENDED_DIR}/bert_model.ckpt
-OUTPUT_DIR="models/output_model_finetunning/${TASKNAME}/BERT_BASE/"
+OUTPUT_DIR="models/output_model_finetunning/${TASKNAME}/BERT_BASE/${EXPERIMENT_NAME}"
 
 
 python3.6 $TRAINING_UTILITY/run_copa.py \
@@ -38,6 +38,6 @@ python3.6 $TRAINING_UTILITY/run_copa.py \
   --init_checkpoint=$CHECKPOINT \
   --max_seq_length=128 \
   --train_batch_size=8 \
-  --learning_rate=1e-5 \
+  --learning_rate=2e-5 \
   --num_train_epochs=3.0 \
   --output_dir=$OUTPUT_DIR/ | tee $OUTPUT_DIR.out

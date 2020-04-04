@@ -1,7 +1,7 @@
 # Nikolai Rozanov
 from retrograph.modeling import tokenization
 import tensorflow as tf
-
+import os
 
 class InputExample(object):
   """A single multiple choice question."""

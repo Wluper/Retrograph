@@ -26,7 +26,7 @@ STEP="25000"
 
 BERT_EXTENDED_DIR=$BERT_DIR
 CHECKPOINT=${BERT_EXTENDED_DIR}/bert_model.ckpt
-OUTPUT_DIR="models/output_model_finetunning/${TASKNAME}"
+OUTPUT_DIR="models/output_model_finetunning/${TASKNAME}/BERT_BASE"
 
 
 python3.6 $TRAINING_UTILITY/run_copa.py \

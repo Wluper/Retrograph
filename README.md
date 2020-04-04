@@ -98,8 +98,8 @@ Creates a model in: `models/output_pretrain_adapter`
 ### 9 - Download Pretrained Adapters (needs to be done if you don't have already pretrained adapters)
 
 ```
-9_downlaod_pretrained_adapters_rw30.sh
-9_downlaod_pretrained_adapters_omcs.sh
+9_download_pretrained_adapters_rw30.sh
+9_download_pretrained_adapters_omcs.sh
 ```
 
 **ALL models will be saved in Creates a model in: `models/output_model_finetunning`**

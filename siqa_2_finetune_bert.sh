@@ -8,7 +8,7 @@
 #Here it is probably recommended to use the orginal optimiser as it optimises BERT
 TRAINING_UTILITY=training_utility
 
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=7
 
 BERT_DIR="models/BERT_BASE_UNCASED"
 BERT_CONFIG=$BERT_DIR/bert_config.json
@@ -17,8 +17,8 @@ BERT_VOCAB=$BERT_DIR/vocab.txt
 TASKNAME='SIQA'
 DATA_DIR=data/$TASKNAME
 
-LEARNING_RATE=2e-5
-EPOCHS=3.0
+LEARNING_RATE=1e-5
+EPOCHS=2.0
 VARIANT=A
 
 EXPERIMENT_NAME=$LEARNING_RATE.$EPOCHS$VARIANT
@@ -31,9 +31,10 @@ CHECKPOINT=${BERT_EXTENDED_DIR}/bert_model.ckpt
 OUTPUT_DIR="models/output_model_finetunning/${TASKNAME}/BERT_BASE/${EXPERIMENT_NAME}"
 
 
-python3.6 $TRAINING_UTILITY/run_copa.py \
+python3.6 $TRAINING_UTILITY/run_siqa.py \
   --do_train=true \
   --do_eval=true \
+  --do_predict=true \
   --data_dir=$DATA_DIR \
   --vocab_file=$BERT_VOCAB \
   --bert_config_file=$BERT_CONFIG \

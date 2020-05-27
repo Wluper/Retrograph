@@ -1,6 +1,19 @@
 # Readme for Retrograph
 ![Retrograph (C) Wluper](images/Retrograph.png)
 
+## Key people
+[Anne Lauscher](https://www.uni-mannheim.de/dws/people/researchers/phd-students/anne-lauscher/)
+
+[Olga Majewska](https://om304.github.io/)
+
+[Leonardo Ribeiro](https://github.com/leoribeiro)
+
+[Goran Glavaš](https://www.uni-mannheim.de/dws/people/professors/prof-dr-goran-glavas/)
+
+[Nikolai Rozanov](https://github.com/ai-nikolai)
+
+[Iryna Gurevych](https://www.informatik.tu-darmstadt.de/ukp/ukp_home/staff_ukp/prof_dr_iryna_gurevych/index.en.jsp)
+
 ## Description
 Retrograph is the official repo behind University of Mannheim's, TU Darmstadt's and Wluper's Commonsense Adapter Paper.
 
@@ -17,7 +30,8 @@ We evaluate on:
 4. siqa
 
 Key results, you can find in the paper:
-[Link to Paper]
+[Link To Paper](https://arxiv.org/abs/2005.11787)
+
 
 
 
